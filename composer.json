@@ -1,0 +1,54 @@
+{
+    "name": ":org_username/:package_name",
+    "description": ":package_description",
+    "keywords": [
+        ":package_name"
+    ],
+    "homepage": "https://github.com/:org_username/:package_name",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": ":author_name",
+            "email": ":author_email",
+            "homepage": ":author_homepage",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1|^7.2",
+        "Illuminate/Support": "^5.6"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.12",
+        "larapack/dd": "^1.0",
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            ":package_space\\Skeleton\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            ":package_space\\Skeleton\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "styles:lint": "vendor/bin/php-cs-fixer fix --dry-run --diff",
+        "styles:fix": "vendor/bin/php-cs-fixer fix"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                ":package_space\\Skeleton\\SkeletonServiceProvider"
+            ],
+            "aliases": {
+                "Skeleton": ":package_space\\Skeleton\\SkeletonFacade"
+            }
+        }
+    }
+}
