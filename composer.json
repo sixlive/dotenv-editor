@@ -1,22 +1,21 @@
 {
-    "name": ":org_username/:package_name",
-    "description": ":package_description",
+    "name": "sixlive/dotenv-editor",
+    "description": "A tool to edit phpdotenv files",
     "keywords": [
-        ":package_name"
+        "dotenv-editor"
     ],
-    "homepage": "https://github.com/:org_username/:package_name",
+    "homepage": "https://github.com/sixlive/dotenv-editor",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": ":author_homepage",
+            "name": "TJ Miller",
+            "email": "oss@tjmiller.co",
+            "homepage": "https://tjmiller.me",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^7.1|^7.2",
-        "Illuminate/Support": "^5.6"
+        "php": "^7.1|^7.2"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.12",
@@ -25,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            ":package_space\\Skeleton\\": "src"
+            "sixlive\\DotenvEditor\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            ":package_space\\Skeleton\\Tests\\": "tests"
+            "sixlive\\DotenvEditor\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -40,15 +39,5 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                ":package_space\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": ":package_space\\Skeleton\\SkeletonFacade"
-            }
-        }
     }
 }

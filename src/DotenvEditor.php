@@ -1,8 +1,8 @@
 <?php
 
-namespace :package_space\Skeleton;
+namespace DotenvEditor\DotenvEditor;
 
-class SkeletonClass
+class DotenvEditor
 {
     /**
      * Create a new Skeleton Instance.

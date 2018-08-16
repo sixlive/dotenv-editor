@@ -1,11 +1,11 @@
 # Very short description of the package
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:org_username/:package_name.svg?style=flat-square)](https://packagist.org/packages/:org_username/:package_name)
-[![Build Status](https://img.shields.io/travis/:org_username/:package_name/master.svg?style=flat-square)](https://travis-ci.org/:org_username/:package_name)
-[![Quality Score](https://img.shields.io/scrutinizer/g/:org_username/:package_name.svg?style=flat-square)](https://scrutinizer-ci.com/g/:org_username/:package_name)
-[![Total Downloads](https://img.shields.io/packagist/dt/:org_username/:package_name.svg?style=flat-square)](https://packagist.org/packages/:org_username/:package_name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/sixlive/dotenv-editor.svg?style=flat-square)](https://packagist.org/packages/sixlive/dotenv-editor)
+[![Build Status](https://img.shields.io/travis/sixlive/dotenv-editor/master.svg?style=flat-square)](https://travis-ci.org/sixlive/dotenv-editor)
+[![Quality Score](https://img.shields.io/scrutinizer/g/sixlive/dotenv-editor.svg?style=flat-square)](https://scrutinizer-ci.com/g/sixlive/dotenv-editor)
+[![Total Downloads](https://img.shields.io/packagist/dt/sixlive/dotenv-editor.svg?style=flat-square)](https://packagist.org/packages/sixlive/dotenv-editor)
 
-**Note:** Replace ```:author_name``` ```:author_username``` ```:author_email``` ```:package_name``` ```:package_description``` ```:package_space``` ```:author_homepage``` ```:org_username``` ```:org_name``` ```:org_email``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line.
+**Note:** Replace ```TJ Miller``` ```sixlive``` ```oss@tjmiller.co``` ```dotenv-editor``` ```A tool to edit phpdotenv files``` ```DotenvEditor``` ```https://tjmiller.me``` ```sixlive``` ```TJ  Miller``` ```oss@tjmiller.co``` with their correct values in [README.md](README.md), [CHANGELOG.md](CHANGELOG.md), [CONTRIBUTING.md](CONTRIBUTING.md), [LICENSE.md](LICENSE.md) and [composer.json](composer.json) files, then delete this line.
 
 This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
 
@@ -14,13 +14,13 @@ This is where your description should go. Try and limit it to a paragraph or two
 You can install the package via composer:
 
 ```bash
-composer require :org_username/:package_name
+composer require sixlive/dotenv-editor
 ```
 
 ## Usage
 
 ``` php
-$skeleton = new :package_space\Skeleton();
+$skeleton = new DotenvEditor;
 echo $skeleton->echoPhrase('Hello!');
 ```
 
@@ -31,7 +31,7 @@ composer test
 ```
 
 ## Code Style
-In addition to the php-cs-fixer rules, StyleCI will apply the [Laravel preset](https://docs.styleci.io/presets#laravel). 
+In addition to the php-cs-fixer rules, StyleCI will apply the [Laravel preset](https://docs.styleci.io/presets#laravel).
 ```bash
 composer styles:lint
 composer styles:fix
@@ -47,12 +47,12 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
+If you discover any security related issues, please email oss@tjmiller.co instead of using the issue tracker.
 
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [TJ Miller](https://github.com/sixlive)
 - [All Contributors](../../contributors)
 
 ## License

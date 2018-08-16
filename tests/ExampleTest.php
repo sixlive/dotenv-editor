@@ -1,10 +1,10 @@
 <?php
 
-namespace :package_space\Skeleton\Tests;
+namespace sixlive\DotenvEditor\Tests;
 
 use PHPUnit\Framework\TestCase;
 
-class ExampleTest extends TestCase
+class DotenvEditorTest extends TestCase
 {
     /** @test */
     public function true_is_true()
