@@ -1,25 +1,53 @@
 <?php
 
-namespace DotenvEditor\DotenvEditor;
+namespace sixlive\DotenvEditor;
+
+use SplFileObject;
+use sixlive\DotenvEditor\Support\Arr;
 
 class DotenvEditor
 {
-    /**
-     * Create a new Skeleton Instance.
-     */
+    protected $env = [];
+
     public function __construct()
     {
-        // constructor body
+        //
     }
 
-    /**
-     * Friendly welcome.
-     *
-     * @param string $phrase Phrase to return
-     * @return string Returns the phrase passed in
-     */
-    public function echoPhrase($phrase)
+    public function load($path)
     {
-        return $phrase;
+        $this->envFile = new SplFileObject($path, 'r+');
+
+        return $this;
+    }
+
+    public function set($key, $value)
+    {
+        $this->env[$key] = $value;
+
+        return $this;
+    }
+
+    public function getEnv($key = '')
+    {
+        return isset($this->env[$key])
+            ? $this->env[$key]
+            : $this->env;
+    }
+
+    public function save()
+    {
+        $this->envFile->fwrite($this->format());
+
+        return $this;
+    }
+
+    private function format()
+    {
+        $valuePairs = Arr::mapWithKeys($this->env, function ($item, $key) {
+            return sprintf('%s=%s', $key, $item);
+        });
+
+        return implode("\n", $valuePairs);
     }
 }
