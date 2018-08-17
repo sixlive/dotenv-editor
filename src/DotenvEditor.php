@@ -9,6 +9,11 @@ class DotenvEditor
 {
     protected $env = [];
 
+    /**
+     * @var \SplFileObject
+     */
+    protected $envFile;
+
     public function __construct()
     {
         //
@@ -17,6 +22,24 @@ class DotenvEditor
     public function load($path)
     {
         $this->envFile = new SplFileObject($path, 'r+');
+
+        if ($this->envFile->getSize() > 0) {
+            $z = explode("\n", $this->envFile->fread($this->envFile->getSize()));
+
+            $zz = array_map(function ($line) {
+                return explode('=', $line);
+            }, $z);
+
+            $zzz = array_map(function ($line) {
+                if (count($line) === 2) {
+                    return [$line[0] => $line[1]];
+                }
+
+                return $line[0];
+            }, $zz);
+
+            $this->env = array_merge($this->env, Arr::flatten($zzz));
+        }
 
         return $this;
     }
@@ -55,6 +78,16 @@ class DotenvEditor
         $this->env[] = sprintf('# %s', $heading);
 
         return $this;
+    }
+
+    public function has($key)
+    {
+        return isset($this->env[$key]);
+    }
+
+    public function __deconstruct()
+    {
+        $this->envFile = '';
     }
 
     private function format()

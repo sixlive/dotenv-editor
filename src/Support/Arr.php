@@ -20,4 +20,18 @@ class Arr
 
         return $newArray;
     }
+
+    public static function flatten($array)
+    {
+        $return = array();
+        foreach ($array as $key => $value) {
+            if (is_array($value)){
+                $return = array_merge($return, static::flatten($value));
+            } else {
+                $return[$key] = $value;
+            }
+        }
+
+        return $return;
+    }
 }

@@ -2,8 +2,6 @@
 
 namespace sixlive\DotenvEditor\Tests\Concerns;
 
-use PHPUnit\Framework\Assert;
-
 trait AssertsFileContents
 {
     /**
@@ -17,6 +15,6 @@ trait AssertsFileContents
      */
     function assertFileContents($contents, $path)
     {
-        Assert::assertEquals($contents, file_get_contents($path));
+        $this->assertEquals($contents, file_get_contents($path));
     }
 }
