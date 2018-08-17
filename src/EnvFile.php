@@ -29,6 +29,8 @@ class EnvFile
      */
     public function write($content)
     {
+        $this->file->rewind();
+        $this->file->ftruncate(0);
         $this->file->fwrite($content);
 
         return $this;

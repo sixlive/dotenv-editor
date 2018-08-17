@@ -18,7 +18,7 @@ class DotenvEditorTest extends TestCase
 
     public function tearDown()
     {
-        unlink($this->path);
+        array_map('unlink', glob(__DIR__.'/tmp/*'));
     }
 
     /** @test */
@@ -176,7 +176,25 @@ class DotenvEditorTest extends TestCase
         $editor->save();
 
         $this->assertFileContents(
-            "EXAMPLE=bar\n\n# Section\nEXAMPLE_2=bar\nEXAMPLE=bar\n\n# Section\nEXAMPLE_2=bar\n\n# Foo\nFOO=bar",
+            "EXAMPLE=bar\n\n# Section\nEXAMPLE_2=bar\n\n# Foo\nFOO=bar",
+            $this->path
+        );
+    }
+
+    /** @test */
+    public function leaves_blank_settings_as_they_were()
+    {
+        $fixturePath = __DIR__.'/Fixtures/env-laravel';
+        copy($fixturePath, $this->path);
+
+        $editor = new DotenvEditor;
+        $editor->load($this->path);
+
+        $editor->set('FOO', 'bar');
+        $editor->save();
+
+        $this->assertFileContents(
+            file_get_contents($fixturePath)."\nFOO=bar",
             $this->path
         );
     }
