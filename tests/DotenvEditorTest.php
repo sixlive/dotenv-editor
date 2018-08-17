@@ -152,7 +152,7 @@ class DotenvEditorTest extends TestCase
     }
 
     /** @test */
-    function configuration_values_can_be_merge_with_an_existing_config()
+    public function configuration_values_can_be_merge_with_an_existing_config()
     {
         copy(__DIR__.'/Fixtures/env-example', $this->path);
         $editor = new DotenvEditor;

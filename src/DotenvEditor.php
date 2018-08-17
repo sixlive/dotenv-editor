@@ -10,7 +10,7 @@ class DotenvEditor
     protected $env = [];
 
     /**
-     * @var \SplFileObject
+     * @var \SplFileObject|null
      */
     protected $envFile;
 
@@ -74,7 +74,7 @@ class DotenvEditor
 
     public function heading($heading)
     {
-        if (!empty(end($this->env))) {
+        if (! empty(end($this->env))) {
             $this->addEmptyLine();
         }
 
@@ -90,7 +90,7 @@ class DotenvEditor
 
     public function __destruct()
     {
-        $this->envFile = '';
+        $this->envFile = null;
     }
 
     private function format()
