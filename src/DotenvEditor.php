@@ -42,10 +42,27 @@ class DotenvEditor
         return $this;
     }
 
+    public function addEmptyLine()
+    {
+        $this->env[] = '';
+
+        return $this;
+    }
+
+    public function heading($heading)
+    {
+        $this->addEmptyLine();
+        $this->env[] = sprintf('# %s', $heading);
+
+        return $this;
+    }
+
     private function format()
     {
         $valuePairs = Arr::mapWithKeys($this->env, function ($item, $key) {
-            return sprintf('%s=%s', $key, $item);
+            return !empty($item)  && !is_integer($key)
+                ? sprintf('%s=%s', $key, $item)
+                : $item;
         });
 
         return implode("\n", $valuePairs);
