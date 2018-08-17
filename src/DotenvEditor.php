@@ -88,7 +88,7 @@ class DotenvEditor
         return isset($this->env[$key]);
     }
 
-    public function __deconstruct()
+    public function __destruct()
     {
         $this->envFile = '';
     }
