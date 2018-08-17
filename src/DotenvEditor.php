@@ -74,7 +74,7 @@ class DotenvEditor
 
     public function heading($heading)
     {
-        if (!empty(end($this->env))) {
+        if (! empty(end($this->env))) {
             $this->addEmptyLine();
         }
 
@@ -96,7 +96,7 @@ class DotenvEditor
     private function format()
     {
         $valuePairs = Arr::mapWithKeys($this->env, function ($item, $key) {
-            return ! empty($item)  && ! is_integer($key)
+            return ! empty($item) && ! is_int($key)
                 ? sprintf('%s=%s', $key, $item)
                 : $item;
         });
