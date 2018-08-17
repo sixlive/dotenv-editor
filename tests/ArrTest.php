@@ -24,4 +24,19 @@ class ArrTest extends TestCase
             'baz' => 'baxqux',
         ], $result);
     }
+
+    /** @test */
+    public function arrays_can_be_flattened()
+    {
+        $array = [
+            ['foo' => 'bar', 'baz' => ['bax' => 'qux']],
+            'qoo' => 'qar',
+        ];
+
+        $this->assertEquals([
+           'foo' => 'bar',
+           'bax' => 'qux',
+           'qoo' => 'qar',
+       ], Arr::flatten($array));
+    }
 }

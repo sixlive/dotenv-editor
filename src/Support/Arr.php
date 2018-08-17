@@ -23,15 +23,16 @@ class Arr
 
     public static function flatten($array)
     {
-        $return = array();
+        $newArray = [];
+
         foreach ($array as $key => $value) {
-            if (is_array($value)){
-                $return = array_merge($return, static::flatten($value));
+            if (is_array($value)) {
+                $newArray = array_merge($newArray, static::flatten($value));
             } else {
-                $return[$key] = $value;
+                $newArray[$key] = $value;
             }
         }
 
-        return $return;
+        return $newArray;
     }
 }

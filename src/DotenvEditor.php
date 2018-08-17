@@ -93,7 +93,7 @@ class DotenvEditor
     private function format()
     {
         $valuePairs = Arr::mapWithKeys($this->env, function ($item, $key) {
-            return !empty($item)  && !is_integer($key)
+            return ! empty($item)  && ! is_integer($key)
                 ? sprintf('%s=%s', $key, $item)
                 : $item;
         });

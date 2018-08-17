@@ -9,11 +9,12 @@ trait AssertsFileContents
      *
      * @param  string  $contents
      * @param  string $path
-     * @return void
      *
      * @throws \PHPUnit\Framework\AssertionFailedError
+     *
+     * @return void
      */
-    function assertFileContents($contents, $path)
+    public function assertFileContents($contents, $path)
     {
         $this->assertEquals($contents, file_get_contents($path));
     }

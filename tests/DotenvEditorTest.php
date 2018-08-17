@@ -11,7 +11,7 @@ class DotenvEditorTest extends TestCase
 
     protected $path = __DIR__.'/tmp/env';
 
-    function setUp()
+    public function setUp()
     {
         touch($this->path);
     }
@@ -50,7 +50,7 @@ class DotenvEditorTest extends TestCase
     }
 
     /** @test */
-    function config_values_can_be_saved()
+    public function config_values_can_be_saved()
     {
         $editor = new DotenvEditor;
 
@@ -62,7 +62,7 @@ class DotenvEditorTest extends TestCase
     }
 
     /** @test */
-    function multiple_config_values_can_be_saved()
+    public function multiple_config_values_can_be_saved()
     {
         $editor = new DotenvEditor;
 
@@ -78,7 +78,7 @@ class DotenvEditorTest extends TestCase
     }
 
     /** @test */
-    function line_breaks_can_be_added()
+    public function line_breaks_can_be_added()
     {
         $editor = new DotenvEditor;
 
@@ -95,7 +95,7 @@ class DotenvEditorTest extends TestCase
     }
 
     /** @test */
-    function headings_can_be_added()
+    public function headings_can_be_added()
     {
         $editor = new DotenvEditor;
 
@@ -111,7 +111,7 @@ class DotenvEditorTest extends TestCase
     }
 
     /** @test */
-    function values_from_files_are_imported_on_load()
+    public function values_from_files_are_imported_on_load()
     {
         $editor = new DotenvEditor;
 
@@ -127,7 +127,7 @@ class DotenvEditorTest extends TestCase
     }
 
     // /** @test */
-    function keys_can_be_checked_for()
+    public function keys_can_be_checked_for()
     {
         $this->markTestSkipped();
 
