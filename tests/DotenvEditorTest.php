@@ -18,7 +18,6 @@ class DotenvEditorTest extends TestCase
 
     public function tearDown()
     {
-        // array_map('unlink', glob(__DIR__.'/tmp/*'));
         unlink($this->path);
     }
 
@@ -105,7 +104,24 @@ class DotenvEditorTest extends TestCase
         $editor->save();
 
         $this->assertFileContents(
-            "\n# Examples\nEXAMPLE_CONFIG=foo",
+            "# Examples\nEXAMPLE_CONFIG=foo",
+            $this->path
+        );
+    }
+
+    /** @test */
+    public function headings_get_added_with_a_new_line_after_a_non_blank_entry()
+    {
+        $editor = new DotenvEditor;
+
+        $editor->load($this->path);
+        $editor->set('APP_KEY', 'bar');
+        $editor->heading('Examples');
+        $editor->set('EXAMPLE_CONFIG', 'foo');
+        $editor->save();
+
+        $this->assertFileContents(
+            "APP_KEY=bar\n\n# Examples\nEXAMPLE_CONFIG=foo",
             $this->path
         );
     }
@@ -126,22 +142,29 @@ class DotenvEditorTest extends TestCase
         ], $editor->getEnv());
     }
 
-    // /** @test */
+    /** @test */
     public function keys_can_be_checked_for()
     {
-        $this->markTestSkipped();
-
         $editor = new DotenvEditor;
+        $editor->load(__DIR__.'/Fixtures/env-example');
 
+        $this->assertTrue($editor->has('EXAMPLE_2'));
+    }
+
+    /** @test */
+    function configuration_values_can_be_merge_with_an_existing_config()
+    {
+        copy(__DIR__.'/Fixtures/env-example', $this->path);
+        $editor = new DotenvEditor;
         $editor->load($this->path);
-        $editor->set('EXAMPLE_CONFIG', 'foo');
 
-        $this->assertFalse($editor->has('EXAMPLE_CONFIG'));
+        $editor->heading('Foo');
+        $editor->set('FOO', 'bar');
         $editor->save();
 
-        $editor = new DotenvEditor;
-        $editor->load($this->path);
-
-        $this->assertTrue($editor->has('EXAMPLE_CONFIG'));
+        $this->assertFileContents(
+            "EXAMPLE=bar\n\n# Section\nEXAMPLE_2=bar\nEXAMPLE=bar\n\n# Section\nEXAMPLE_2=bar\n\n# Foo\nFOO=bar",
+            $this->path
+        );
     }
 }

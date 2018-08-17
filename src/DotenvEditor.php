@@ -74,7 +74,10 @@ class DotenvEditor
 
     public function heading($heading)
     {
-        $this->addEmptyLine();
+        if (!empty(end($this->env))) {
+            $this->addEmptyLine();
+        }
+
         $this->env[] = sprintf('# %s', $heading);
 
         return $this;
