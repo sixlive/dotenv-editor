@@ -31,6 +31,7 @@ class EnvFile
     {
         $this->file->rewind();
         $this->file->ftruncate(0);
+
         return $this->file->fwrite($content);
     }
 

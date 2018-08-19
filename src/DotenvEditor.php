@@ -79,6 +79,7 @@ class DotenvEditor
         if (empty($path) && $this->envFile) {
             return $this->envFile->write($this->format()) > 0;
         }
+
         return file_put_contents($path, $this->format()) !== false;
     }
 
