@@ -15,7 +15,6 @@ $rules = [
     'phpdoc_indent' => true,
     'phpdoc_no_package' => true,
     'phpdoc_order' => true,
-    'phpdoc_separation' => true,
     'phpdoc_single_line_var_spacing' => true,
     'phpdoc_trim' => true,
     'phpdoc_var_without_name' => true,

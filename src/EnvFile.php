@@ -25,15 +25,13 @@ class EnvFile
      *
      * @param  string  $content
      *
-     * @return self
+     * @return bool
      */
     public function write($content)
     {
         $this->file->rewind();
         $this->file->ftruncate(0);
-        $this->file->fwrite($content);
-
-        return $this;
+        return $this->file->fwrite($content);
     }
 
     /**
