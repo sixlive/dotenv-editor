@@ -2,6 +2,7 @@
 
 namespace sixlive\DotenvEditor;
 
+use InvalidArgumentException;
 use sixlive\DotenvEditor\Support\Arr;
 
 class DotenvEditor
@@ -20,11 +21,16 @@ class DotenvEditor
      * Load an values from an env file.
      *
      * @param  string  $path
-     *
      * @return self
+     *
+     * @throws \InvalidArgumentException
      */
     public function load($path)
     {
+        if (! file_exists($path)) {
+            throw new InvalidArgumentException(sprintf('%s does not exist', $path));
+        }
+
         $this->envFile = new EnvFile($path);
 
         if ($this->envFile->isNotEmpty()) {
@@ -39,7 +45,6 @@ class DotenvEditor
      *
      * @param  string  $key
      * @param  string  $value
-     *
      * @return self
      */
     public function set($key, $value)
@@ -53,7 +58,6 @@ class DotenvEditor
      * Get all of the env values or a single value by key.
      *
      * @param  string  $key
-     *
      * @return array|string
      */
     public function getEnv($key = '')
@@ -68,23 +72,19 @@ class DotenvEditor
      * a file was loaded, it will overwrite the file that was loaded.
      *
      * @param  string  $path
-     *
-     * @return self
+     * @return bool
      */
     public function save($path = '')
     {
         if (empty($path) && $this->envFile) {
-            $this->envFile->write($this->format());
-        } else {
-            file_put_contents($path, $this->format());
+            return $this->envFile->write($this->format()) > 0;
         }
 
-        return $this;
+        return file_put_contents($path, $this->format()) !== false;
     }
 
     /**
      * Add an empty line to the config.
-     *
      * @return self
      */
     public function addEmptyLine()
@@ -99,7 +99,6 @@ class DotenvEditor
      * line before the heading.
      *
      * @param  string  $heading
-     *
      * @return self
      */
     public function heading($heading)
@@ -117,7 +116,6 @@ class DotenvEditor
      * Check if a key is defined in the env.
      *
      * @param  string  $key
-     *
      * @return bool
      */
     public function has($key)

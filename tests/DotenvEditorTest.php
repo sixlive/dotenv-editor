@@ -2,6 +2,7 @@
 
 namespace sixlive\DotenvEditor\Tests;
 
+use InvalidArgumentException;
 use PHPUnit\Framework\TestCase;
 use sixlive\DotenvEditor\DotenvEditor;
 
@@ -197,5 +198,26 @@ class DotenvEditorTest extends TestCase
             file_get_contents($fixturePath)."\nFOO=bar",
             $this->path
         );
+    }
+
+    /** @test */
+    public function an_exception_is_thrown_if_the_file_does_not_exist()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        $editor = new DotenvEditor;
+        $editor->load(__DIR__.'/.env');
+    }
+
+    /** @test */
+    public function returns_true_if_file_is_written()
+    {
+        $fixturePath = __DIR__.'/Fixtures/env-laravel';
+        copy($fixturePath, $this->path);
+
+        $editor = new DotenvEditor;
+        $editor->load($this->path);
+
+        $this->assertTrue($editor->save());
     }
 }
