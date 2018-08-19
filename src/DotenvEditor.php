@@ -21,8 +21,9 @@ class DotenvEditor
      * Load an values from an env file.
      *
      * @param  string  $path
-     * @throws \InvalidArgumentException
      * @return self
+     *
+     * @throws \InvalidArgumentException
      */
     public function load($path)
     {
