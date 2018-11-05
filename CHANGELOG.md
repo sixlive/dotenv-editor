@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) a
 
 ## [1.1.1] - 2018-11-05
 ### Fixed
-* Issue parsing Laravel `APP_KEY`
+* Issue parsing Laravel `APP_KEY` ([#4](https://github.com/sixlive/dotenv-editor/pull/4))
 
 ## [1.1.0] - 2018-08-19
 ### Changed
