@@ -220,4 +220,17 @@ class DotenvEditorTest extends TestCase
 
         $this->assertTrue($editor->save());
     }
+
+    /** @test */
+    public function does_not_modify_app_key()
+    {
+        $fixturePath = __DIR__.'/Fixtures/env-laravel';
+
+        $editor = new DotenvEditor;
+        $editor->load($fixturePath);
+        $this->assertEquals(
+            'base64:LPqcjIZ3/T2pO4yrL7vgb6W/+hgyau002onyOKHvzfo=',
+            $editor->getEnv('APP_KEY')
+        );
+    }
 }
