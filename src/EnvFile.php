@@ -86,7 +86,7 @@ class EnvFile
     private function convertLineValuesToArray()
     {
         return array_map(function ($line) {
-            return explode('=', $line);
+            return preg_split('/=/', $line, 2);
         }, $this->linesFromFile());
     }
 
