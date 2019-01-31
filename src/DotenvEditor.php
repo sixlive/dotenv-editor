@@ -55,6 +55,19 @@ class DotenvEditor
     }
 
     /**
+     * Unset a key value of the env file.
+     *
+     * @param  string  $key
+     * @return self
+     */
+    public function unset($key)
+    {
+        unset($this->env[$key]);
+
+        return $this;
+    }
+
+    /**
      * Get all of the env values or a single value by key.
      *
      * @param  string  $key

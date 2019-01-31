@@ -32,7 +32,21 @@ class DotenvEditorTest extends TestCase
         $this->assertEquals(
            'foo',
            $editor->getEnv('EXAMPLE_CONFIG')
-       );
+        );
+    }
+
+    /** @test */
+    public function a_config_value_can_be_unset()
+    {
+        $editor = new DotenvEditor;
+
+        $editor->set('EXAMPLE_CONFIG', 'foo');
+
+        $editor->unset('EXAMPLE_CONFIG');
+
+        $this->assertEmpty(
+           $editor->getEnv('EXAMPLE_CONFIG')
+        );
     }
 
     /** @test */
@@ -42,9 +56,11 @@ class DotenvEditorTest extends TestCase
 
         $editor->set('EXAMPLE_CONFIG', 'foo');
         $editor->set('EXAMPLE_CONFIG_2', 'bar');
+        $editor->set('EXAMPLE_CONFIG_3', 'baz');
+        $editor->unset('EXAMPLE_CONFIG_2');
 
         $this->assertEquals(
-           ['EXAMPLE_CONFIG' => 'foo', 'EXAMPLE_CONFIG_2' => 'bar'],
+           ['EXAMPLE_CONFIG' => 'foo', 'EXAMPLE_CONFIG_3' => 'baz'],
            $editor->getEnv()
        );
     }
@@ -82,6 +98,8 @@ class DotenvEditorTest extends TestCase
         $editor->load($this->path);
         $editor->set('EXAMPLE_CONFIG', 'foo');
         $editor->set('EXAMPLE_CONFIG_2', 'bar');
+        $editor->set('EXAMPLE_CONFIG_3', 'baz');
+        $editor->unset('EXAMPLE_CONFIG_3');
         $editor->save();
 
         $this->assertFileContents(
@@ -130,8 +148,10 @@ class DotenvEditorTest extends TestCase
 
         $editor->load($this->path);
         $editor->set('APP_KEY', 'bar');
+        $editor->set('APP_FOO', 'bar');
         $editor->heading('Examples');
         $editor->set('EXAMPLE_CONFIG', 'foo');
+        $editor->unset('APP_FOO');
         $editor->save();
 
         $this->assertFileContents(
@@ -149,9 +169,10 @@ class DotenvEditorTest extends TestCase
 
         $this->assertEquals([
             'EXAMPLE' => 'bar',
+            'EXAMPLE_2' => 'bar',
             0 => '',
             1 => '# Section',
-            'EXAMPLE_2' => 'bar',
+            'EXAMPLE_3' => 'bar',
             2 => '',
         ], $editor->getEnv());
     }
@@ -174,10 +195,11 @@ class DotenvEditorTest extends TestCase
 
         $editor->heading('Foo');
         $editor->set('FOO', 'bar');
+        $editor->unset('EXAMPLE_2');
         $editor->save();
 
         $this->assertFileContents(
-            "EXAMPLE=bar\n\n# Section\nEXAMPLE_2=bar\n\n# Foo\nFOO=bar",
+            "EXAMPLE=bar\n\n# Section\nEXAMPLE_3=bar\n\n# Foo\nFOO=bar",
             $this->path
         );
     }
