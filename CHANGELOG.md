@@ -4,11 +4,9 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [1.2.0] - 2019-01-31
 ### Added
-* Added a `unset` method to allow the possibily to remove a property defined in the .env file.
-
-### Changed
-* The current `DotenvEditorTest` tests to validate the usage of the new `unset` method.
+* Added a `unset` method to allow the possibily to remove a property defined in the .env file. ([#5](https://github.com/sixlive/dotenv-editor/pull/5))
 
 ## [1.1.1] - 2018-11-05
 ### Fixed
