@@ -22,6 +22,7 @@ You can install the package via composer:
 Given we have an existing file at `base_path('.env')`.
 ```
 APP_KEY=supersecret
+APP_FOO=BAR
 ```
 
 We can add a new section to the existing configuration file.
@@ -32,6 +33,7 @@ $editor->load(base_path('.env'));
 $editor->heading('Examples');
 $editor->set('FOO', 'bar');
 $editor->set('BAZ', 'bax');
+$editor->unset('APP_FOO');
 $editor->save();
 ```
 
