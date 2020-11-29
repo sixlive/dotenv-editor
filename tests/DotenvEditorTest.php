@@ -30,8 +30,8 @@ class DotenvEditorTest extends TestCase
         $editor->set('EXAMPLE_CONFIG', 'foo');
 
         $this->assertEquals(
-           'foo',
-           $editor->getEnv('EXAMPLE_CONFIG')
+            'foo',
+            $editor->getEnv('EXAMPLE_CONFIG')
         );
     }
 
@@ -45,7 +45,7 @@ class DotenvEditorTest extends TestCase
         $editor->unset('EXAMPLE_CONFIG');
 
         $this->assertEmpty(
-           $editor->getEnv('EXAMPLE_CONFIG')
+            $editor->getEnv('EXAMPLE_CONFIG')
         );
     }
 
@@ -60,9 +60,9 @@ class DotenvEditorTest extends TestCase
         $editor->unset('EXAMPLE_CONFIG_2');
 
         $this->assertEquals(
-           ['EXAMPLE_CONFIG' => 'foo', 'EXAMPLE_CONFIG_3' => 'baz'],
-           $editor->getEnv()
-       );
+            ['EXAMPLE_CONFIG' => 'foo', 'EXAMPLE_CONFIG_3' => 'baz'],
+            $editor->getEnv()
+        );
     }
 
     /** @test */
