@@ -2,8 +2,8 @@
 
 namespace sixlive\DotenvEditor;
 
-use SplFileObject;
 use sixlive\DotenvEditor\Support\Arr;
+use SplFileObject;
 
 class EnvFile
 {
