@@ -11,9 +11,9 @@ class ArrTest extends TestCase
     public function it_will_map_with_keys()
     {
         $array = [
-        'foo' => 'bar',
-        'baz' => 'bax',
-    ];
+            'foo' => 'bar',
+            'baz' => 'bax',
+        ];
 
         $result = Arr::mapWithKeys($array, function ($item, $key) {
             return $item.'qux';
@@ -34,9 +34,9 @@ class ArrTest extends TestCase
         ];
 
         $this->assertEquals([
-           'foo' => 'bar',
-           'bax' => 'qux',
-           'qoo' => 'qar',
-       ], Arr::flatten($array));
+            'foo' => 'bar',
+            'bax' => 'qux',
+            'qoo' => 'qar',
+        ], Arr::flatten($array));
     }
 }
