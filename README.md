@@ -52,11 +52,7 @@ BAZ=bax
 ```
 
 ## Code Style
-In addition to the php-cs-fixer rules, StyleCI will apply the [Laravel preset](https://docs.styleci.io/presets#laravel).
-```bash
-> composer styles:lint
-> composer styles:fix
-```
+StyleCI will apply the [Laravel preset](https://docs.styleci.io/presets#laravel).
 
 ## Changelog
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
