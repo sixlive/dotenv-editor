@@ -20,7 +20,6 @@
         "php": "^7.1|^8.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.12",
         "larapack/dd": "^1.0",
         "phpunit/phpunit": "^7.0|^8.0|^9.0"
     },
@@ -33,10 +32,6 @@
         "psr-4": {
             "sixlive\\DotenvEditor\\Tests\\": "tests"
         }
-    },
-    "scripts": {
-        "styles:lint": "vendor/bin/php-cs-fixer fix --dry-run --diff",
-        "styles:fix": "vendor/bin/php-cs-fixer fix"
     },
     "config": {
         "sort-packages": true
