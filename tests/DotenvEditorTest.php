@@ -12,12 +12,12 @@ class DotenvEditorTest extends TestCase
 
     protected $path = __DIR__.'/tmp/env';
 
-    public function setUp()
+    public function setUp(): void
     {
         touch($this->path);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         array_map('unlink', glob(__DIR__.'/tmp/*'));
     }
