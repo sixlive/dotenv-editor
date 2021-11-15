@@ -25,7 +25,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function a_config_value_can_be_set()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->set('EXAMPLE_CONFIG', 'foo');
 
@@ -38,7 +38,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function a_config_value_can_be_unset()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->set('EXAMPLE_CONFIG', 'foo');
 
@@ -52,7 +52,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function all_config_values_can_be_retrieved()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->set('EXAMPLE_CONFIG', 'foo');
         $editor->set('EXAMPLE_CONFIG_2', 'bar');
@@ -68,7 +68,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function config_values_can_be_saved()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->load($this->path);
         $editor->set('EXAMPLE_CONFIG', 'foo');
@@ -81,7 +81,7 @@ class DotenvEditorTest extends TestCase
     public function config_values_can_be_saved_to_a_new_path()
     {
         $newPath = __DIR__.'/tmp/env-new';
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->load($this->path);
         $editor->set('EXAMPLE_CONFIG', 'foo');
@@ -93,7 +93,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function multiple_config_values_can_be_saved()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->load($this->path);
         $editor->set('EXAMPLE_CONFIG', 'foo');
@@ -111,7 +111,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function line_breaks_can_be_added()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->load($this->path);
         $editor->set('EXAMPLE_CONFIG', 'foo');
@@ -128,7 +128,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function headings_can_be_added()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->load($this->path);
         $editor->heading('Examples');
@@ -144,7 +144,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function headings_get_added_with_a_new_line_after_a_non_blank_entry()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->load($this->path);
         $editor->set('APP_KEY', 'bar');
@@ -163,7 +163,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function values_from_files_are_imported_on_load()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
 
         $editor->load(__DIR__.'/Fixtures/env-example');
 
@@ -180,7 +180,7 @@ class DotenvEditorTest extends TestCase
     /** @test */
     public function keys_can_be_checked_for()
     {
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
         $editor->load(__DIR__.'/Fixtures/env-example');
 
         $this->assertTrue($editor->has('EXAMPLE_2'));
@@ -190,7 +190,7 @@ class DotenvEditorTest extends TestCase
     public function configuration_values_can_be_merge_with_an_existing_config()
     {
         copy(__DIR__.'/Fixtures/env-example', $this->path);
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
         $editor->load($this->path);
 
         $editor->heading('Foo');
@@ -210,7 +210,7 @@ class DotenvEditorTest extends TestCase
         $fixturePath = __DIR__.'/Fixtures/env-laravel';
         copy($fixturePath, $this->path);
 
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
         $editor->load($this->path);
 
         $editor->set('FOO', 'bar');
@@ -227,7 +227,7 @@ class DotenvEditorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
         $editor->load(__DIR__.'/.env');
     }
 
@@ -237,7 +237,7 @@ class DotenvEditorTest extends TestCase
         $fixturePath = __DIR__.'/Fixtures/env-laravel';
         copy($fixturePath, $this->path);
 
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
         $editor->load($this->path);
 
         $this->assertTrue($editor->save());
@@ -248,7 +248,7 @@ class DotenvEditorTest extends TestCase
     {
         $fixturePath = __DIR__.'/Fixtures/env-laravel';
 
-        $editor = new DotenvEditor;
+        $editor = new DotenvEditor();
         $editor->load($fixturePath);
         $this->assertEquals(
             'base64:LPqcjIZ3/T2pO4yrL7vgb6W/+hgyau002onyOKHvzfo=',

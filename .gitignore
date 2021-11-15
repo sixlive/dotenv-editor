@@ -4,3 +4,4 @@ docs
 vendor
 coverage
 phpunit.xml
+.php-cs-fixer.cache
