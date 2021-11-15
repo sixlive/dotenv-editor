@@ -3,7 +3,6 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/sixlive/dotenv-editor.svg?style=flat-square)](https://packagist.org/packages/sixlive/dotenv-editor)
 [![Total Downloads](https://img.shields.io/packagist/dt/sixlive/dotenv-editor.svg?style=flat-square)](https://packagist.org/packages/sixlive/dotenv-editor)
 ![run-tests](https://github.com/sixlive/dotenv-editor/workflows/run-tests/badge.svg)
-[![StyleCI](https://github.styleci.io/repos/145056191/shield)](https://github.styleci.io/repos/145056191)
 
 This package provides some basic tools for editing dotenv files.
 
