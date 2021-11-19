@@ -74,7 +74,7 @@ class DotenvEditorTest extends TestCase
         $editor->set('EXAMPLE_CONFIG', 'foo');
         $editor->save();
 
-        $this->assertFileContents('EXAMPLE_CONFIG=foo', $this->path);
+        $this->assertFileContents('EXAMPLE_CONFIG="foo"', $this->path);
     }
 
     /** @test */
@@ -87,7 +87,7 @@ class DotenvEditorTest extends TestCase
         $editor->set('EXAMPLE_CONFIG', 'foo');
         $editor->save($newPath);
 
-        $this->assertFileContents('EXAMPLE_CONFIG=foo', $newPath);
+        $this->assertFileContents('EXAMPLE_CONFIG="foo"', $newPath);
     }
 
     /** @test */
@@ -103,7 +103,7 @@ class DotenvEditorTest extends TestCase
         $editor->save();
 
         $this->assertFileContents(
-            "EXAMPLE_CONFIG=foo\nEXAMPLE_CONFIG_2=bar",
+            "EXAMPLE_CONFIG=\"foo\"\nEXAMPLE_CONFIG_2=\"bar\"",
             $this->path
         );
     }
@@ -120,7 +120,7 @@ class DotenvEditorTest extends TestCase
         $editor->save();
 
         $this->assertFileContents(
-            "EXAMPLE_CONFIG=foo\n\nEXAMPLE_CONFIG_2=bar",
+            "EXAMPLE_CONFIG=\"foo\"\n\nEXAMPLE_CONFIG_2=\"bar\"",
             $this->path
         );
     }
@@ -136,7 +136,7 @@ class DotenvEditorTest extends TestCase
         $editor->save();
 
         $this->assertFileContents(
-            "# Examples\nEXAMPLE_CONFIG=foo",
+            "# Examples\nEXAMPLE_CONFIG=\"foo\"",
             $this->path
         );
     }
@@ -155,7 +155,7 @@ class DotenvEditorTest extends TestCase
         $editor->save();
 
         $this->assertFileContents(
-            "APP_KEY=bar\n\n# Examples\nEXAMPLE_CONFIG=foo",
+            "APP_KEY=\"bar\"\n\n# Examples\nEXAMPLE_CONFIG=\"foo\"",
             $this->path
         );
     }
@@ -199,7 +199,7 @@ class DotenvEditorTest extends TestCase
         $editor->save();
 
         $this->assertFileContents(
-            "EXAMPLE=bar\n\n# Section\nEXAMPLE_3=bar\n\n# Foo\nFOO=bar",
+            "EXAMPLE=bar\n\n# Section\nEXAMPLE_3=bar\n\n# Foo\nFOO=\"bar\"",
             $this->path
         );
     }
@@ -217,7 +217,7 @@ class DotenvEditorTest extends TestCase
         $editor->save();
 
         $this->assertFileContents(
-            file_get_contents($fixturePath)."\nFOO=bar",
+            file_get_contents($fixturePath)."\nFOO=\"bar\"",
             $this->path
         );
     }

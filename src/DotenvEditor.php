@@ -13,6 +13,11 @@ class DotenvEditor
     protected $env = [];
 
     /**
+     * @var array
+     */
+    protected $tracked = [];
+
+    /**
      * @var \sixlive\DotenvEditor\EnvFile
      */
     protected $envFile;
@@ -50,6 +55,7 @@ class DotenvEditor
     public function set($key, $value)
     {
         $this->env[$key] = $value;
+        $this->tracked[] = $key;
 
         return $this;
     }
@@ -151,6 +157,12 @@ class DotenvEditor
     private function format()
     {
         $valuePairs = Arr::mapWithKeys($this->env, function ($item, $key) {
+            // If we are adding the key we should wrap the contents to prevent
+            // any special characters from leaking through.
+            if (in_array($key, $this->tracked)) {
+                return sprintf('%s="%s"', $key, $item);
+            }
+
             return is_string($key)
                 ? sprintf('%s=%s', $key, $item)
                 : $item;
