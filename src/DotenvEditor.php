@@ -138,9 +138,7 @@ class DotenvEditor
 
     public function __destruct()
     {
-        if ($this->envFile) {
-            $this->envFile->close();
-        }
+        $this->envFile?->close();
     }
 
     /**
